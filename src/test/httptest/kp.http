@@ -1,0 +1,46 @@
+# 测试杨陈接口
+#asdasdasdfsdfssdfasdasd
+POST http://localhost:9010/aisino/receiveData
+#POST http://localhost:8900/aisino/receiveData
+#POST http://fptypt.schtxxcdfgs.com:9020/aisino/receiveData
+Content-Type: application/json
+
+[{
+	"headInitial": {
+		"BY1": "41",
+		"BZ": "登记编号:SE2019120501657-A 设计费用水地址:金桥医院站（华兴站）工程名称:中铁六局集团建筑安装工程有限公司成都轨道交通9号线一期工程机电装修2标金桥医院站（华兴站）新装水表工程",
+		"DJHM": "d62007fd9c0b413c9c6543f86e2dd9b80200039",
+		"DJLX": "0",
+		"FHR": "余丹",
+		"FPZL": "0",
+		"GFDZDH": "四川省成都市高新区九兴大道12号 028 85127 549",
+		"GFMC": "四川公路桥梁建设集团有限公司",
+		"GFSH": "91510 000201 8119 0XN",
+		"GFYHZH": "建行成都双楠支行  5105 0187543600000061",
+		"KPR": "郑晓清",
+		"SKR": "郑晓清",
+		"XFDZDH": "四川省成都市九兴大道四川路桥大厦五层 028-86118837",
+		"XFMC": "四川路桥桥梁工程有限责任公司",
+		"XFSH": "339901999999516",
+		"XFYHZH": "招商银行成都锦江支行  285081617410001"
+//		"BY3": "0"
+//		"YFPDM":"3300062140",
+//		"YFPHM":"00995723"
+	},
+	"kpMethod": "1",
+	"lineInitialList": [{
+		"DJ": "20",
+		"DW": "套",
+		"GGXH": "200T",
+		"HSBZ": "1",
+		"JE": "60",
+		"SL": "3",
+		"SLV": "13",
+		"SPHXZ": "0",
+		"SPMC": "分体式水泥罐加工",
+		"SPXH": "1",
+		"SSFLBM": "2010500000000000000"
+	}]
+}]
+
+###

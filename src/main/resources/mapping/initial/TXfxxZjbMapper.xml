@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisino.mapper.initial.TXfxxZjbMapper" >
+  <resultMap id="BaseResultMap" type="com.aisino.entity.initial.TXfxxZjb" >
+    <id column="UUID" property="UUID" jdbcType="VARCHAR" />
+    <result column="USERID" property="USERID" jdbcType="VARCHAR" />
+    <result column="XFXXID" property="XFXXID" jdbcType="VARCHAR" />
+    <result column="XFMC" property="XFMC" jdbcType="VARCHAR" />
+    <result column="XFSH" property="XFSH" jdbcType="VARCHAR" />
+    <result column="BY1" property="BY1" jdbcType="VARCHAR" />
+    <result column="BY2" property="BY2" jdbcType="VARCHAR" />
+    <result column="BY3" property="BY3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UUID, USERID, XFXXID, XFMC, XFSH, BY1, BY2, BY3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_xfxx_zjb
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_xfxx_zjb
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+    insert into t_xfxx_zjb (UUID, USERID, XFXXID, 
+      XFMC, XFSH, BY1, BY2, 
+      BY3)
+    values (#{UUID,jdbcType=VARCHAR}, #{USERID,jdbcType=VARCHAR}, #{XFXXID,jdbcType=VARCHAR}, 
+      #{XFMC,jdbcType=VARCHAR}, #{XFSH,jdbcType=VARCHAR}, #{BY1,jdbcType=VARCHAR}, #{BY2,jdbcType=VARCHAR}, 
+      #{BY3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+    insert into t_xfxx_zjb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="UUID != null" >
+        UUID,
+      </if>
+      <if test="USERID != null" >
+        USERID,
+      </if>
+      <if test="XFXXID != null" >
+        XFXXID,
+      </if>
+      <if test="XFMC != null" >
+        XFMC,
+      </if>
+      <if test="XFSH != null" >
+        XFSH,
+      </if>
+      <if test="BY1 != null" >
+        BY1,
+      </if>
+      <if test="BY2 != null" >
+        BY2,
+      </if>
+      <if test="BY3 != null" >
+        BY3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="UUID != null" >
+        #{UUID,jdbcType=VARCHAR},
+      </if>
+      <if test="USERID != null" >
+        #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="XFXXID != null" >
+        #{XFXXID,jdbcType=VARCHAR},
+      </if>
+      <if test="XFMC != null" >
+        #{XFMC,jdbcType=VARCHAR},
+      </if>
+      <if test="XFSH != null" >
+        #{XFSH,jdbcType=VARCHAR},
+      </if>
+      <if test="BY1 != null" >
+        #{BY1,jdbcType=VARCHAR},
+      </if>
+      <if test="BY2 != null" >
+        #{BY2,jdbcType=VARCHAR},
+      </if>
+      <if test="BY3 != null" >
+        #{BY3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+    update t_xfxx_zjb
+    <set >
+      <if test="USERID != null" >
+        USERID = #{USERID,jdbcType=VARCHAR},
+      </if>
+      <if test="XFXXID != null" >
+        XFXXID = #{XFXXID,jdbcType=VARCHAR},
+      </if>
+      <if test="XFMC != null" >
+        XFMC = #{XFMC,jdbcType=VARCHAR},
+      </if>
+      <if test="XFSH != null" >
+        XFSH = #{XFSH,jdbcType=VARCHAR},
+      </if>
+      <if test="BY1 != null" >
+        BY1 = #{BY1,jdbcType=VARCHAR},
+      </if>
+      <if test="BY2 != null" >
+        BY2 = #{BY2,jdbcType=VARCHAR},
+      </if>
+      <if test="BY3 != null" >
+        BY3 = #{BY3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+    update t_xfxx_zjb
+    set USERID = #{USERID,jdbcType=VARCHAR},
+      XFXXID = #{XFXXID,jdbcType=VARCHAR},
+      XFMC = #{XFMC,jdbcType=VARCHAR},
+      XFSH = #{XFSH,jdbcType=VARCHAR},
+      BY1 = #{BY1,jdbcType=VARCHAR},
+      BY2 = #{BY2,jdbcType=VARCHAR},
+      BY3 = #{BY3,jdbcType=VARCHAR}
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </update>
+
+  <!--List<TXfxxZjb> getXfxxListByUser(String USERID);-->
+  <select id="getXfxxListByUser" resultMap="BaseResultMap">
+    SELECT
+      a.UUID, USERID, XFXXID,
+      (SELECT b.XFMC FROM t_xfxx b WHERE XFXXID = b.UUID) XFMC,
+      (SELECT b.XFSH FROM t_xfxx b WHERE XFXXID = b.UUID) XFSH,
+      a.BY1, a.BY2, a.BY3
+    FROM
+      t_xfxx_zjb a
+    WHERE
+      USERID=#{USERID,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByUserIdAndXfxxId" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from
+      t_xfxx_zjb
+    where
+      USERID = #{USERID,jdbcType=VARCHAR} and XFXXID = #{XFXXID,jdbcType=VARCHAR}
+  </select>
+</mapper>

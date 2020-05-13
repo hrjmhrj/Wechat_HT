@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisino.mapper.system.QuanXianMapper">
+
+    <!-- 查询真实用户名 -->
+    <select id="selectName" resultType="String">
+        select NAME
+        from t_qx_user
+        where USERNAME = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 通过用户名查询所有功能 -->
+    <select id="selectAllFunByUserName" resultType="java.lang.String" parameterType="java.lang.String">
+        select t_qx_menu.url
+        from t_qx_user,
+             t_user_role,
+             t_qx_role,
+             t_qx_menu,
+             t_role_menu
+        where t_qx_user.ID = #{ID}
+          and t_qx_user.ID = t_user_role.user_id
+          and t_user_role.role_id = t_qx_role.ID
+          and t_role_menu.ROLEID = t_user_role.role_id
+          and t_role_menu.EMNUID = t_qx_menu.ID
+          and t_qx_menu.MARK = '0'
+    </select>
+
+    <select id="selectAllRole" resultType="Map" parameterType="java.lang.String">
+        select *
+        from t_qx_role
+        ORDER BY SORT
+    </select>
+
+    <select id="selectAllFun" resultType="Map" parameterType="java.lang.String">
+        select *
+        from t_qx_menu
+        ORDER BY SORT
+    </select>
+
+    <select id="selectAllFunXiaoXie" resultType="Map" parameterType="java.lang.String">
+        select id,
+               name,
+               url,
+               parent_id,
+               sort,
+               mark
+        from t_qx_menu m
+
+        ORDER BY SORT
+    </select>
+    <!--where m.ID in (select r.EMNUID
+                       from t_role_menu r
+                                LEFT JOIN t_user_role u on u.role_id = r.ROLEID
+                       where u.user_id = #{userId})-->
+
+    <select id="selectAllFunPage" resultType="java.lang.String" parameterType="java.lang.String">
+        select url
+        from t_qx_menu
+        where mark = '1'
+    </select>
+
+    <select id="selectRoleMenu" resultType="java.lang.String" parameterType="java.lang.String">
+        select EMNUID
+        from t_role_menu
+        where ROLEID = #{roleID}
+    </select>
+    <select id="selectYwUserFunList" resultType="java.lang.String">
+        select t_qx_menu.url
+        from
+             t_qx_role,
+             t_qx_menu,
+             t_role_menu
+        where t_role_menu.ROLEID = #{role_id}
+          and t_role_menu.EMNUID = t_qx_menu.ID
+          and t_qx_menu.MARK = '0'
+    </select>
+
+    <update id="updateRoleFun" parameterType="java.lang.String">
+        update t_qx_role
+        set MENU_ID=#{ziYuanIDs}
+        where ID = #{roleID}
+    </update>
+
+    <insert id="insertRole" parameterType="java.lang.String">
+        insert into t_qx_role (ID, NAME, SORT)
+        values (#{ID}, #{NAME}, #{SORT})
+    </insert>
+
+    <delete id="deleteRole" parameterType="java.lang.String">
+        delete
+        from t_qx_role
+        where ID = #{ID}
+    </delete>
+
+    <delete id="deleteRoleMenu" parameterType="java.lang.String">
+        delete
+        from t_role_menu
+        where ROLEID = #{ID}
+    </delete>
+
+    <update id="updateRole" parameterType="java.lang.String">
+        update t_qx_role
+        set NAME=#{NAME},
+            SORT=#{SORT}
+        where ID = #{ID}
+    </update>
+
+    <insert id="insertRoleMenu" parameterType="java.lang.String">
+        insert into t_role_menu (ROLEID, EMNUID)
+        values (#{ID}, #{EMNUID})
+    </insert>
+
+
+</mapper>

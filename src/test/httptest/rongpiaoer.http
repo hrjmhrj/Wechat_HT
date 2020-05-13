@@ -1,0 +1,48 @@
+# 测试杨陈接口
+POST https://api-rpr.yewifi.com/life-service/callback?appkey=91510100395911836B
+Content-Type: application/json
+
+{
+  "type": 0,
+  "invoice_type": "026",
+  "identification_number": " 499919038595",
+  "invoice_code": "1111111111",
+  "invoice_no": "22222222",
+  "invoice_date": "2019-02-22",
+  "check_code": "23234234234",
+  "security_code": "03<-02>86*+54*486-7378>44341-0-27-7>23-086+*5—64633>8*1 88648>*6*3*--9/51>+**//<253--+*015—419",
+  "pdf_url": "http://xxx.com/sss.pdf",
+  "total_amount": "10.22",
+  "total_amount_no_tax": "10.11",
+  "tax_amount": "0.11",
+  "buyer_title": "xx有限公司",
+  "buyer_title_type": 1,
+  "drawer": "张利",
+  "seller_name": "xx饰品店",
+  "seller_tax_code": "33333333333333333333",
+  "seller_address": "成都市xx路xx号",
+  "user": {
+    "idcard": "51132213241234"
+  },
+  "items": [
+    {
+      "line_no": 1,
+      "name": "大米",
+      "tax_code": "09909090999",
+      "tax_rate": "0.6",
+      "tax_type": "餐饮服务",
+      "amount": "10.11"
+    }
+  ]
+}
+
+###
+# 测试杨陈接口
+POST https://api-rpr.yewifi.com/life-service/callback?appkey=91510100395911836B
+Content-Type: application/json
+
+{
+  "data":"E1n3HM8rwrpulqbzQ6TtcSXFMwxms73pNe1rpNONqIsAjlmMFhhGNTvzIpM0oSwGcEF0rwHzT9DTchLxEFCTmDx8ElggA2Md50iobFkIB16B2ZAdIJu+2cBLKT7jazONYai28wAPtOZdPF+bCKNdt1UXOOSzOEGzY8INGzGg0q6cOvOIOjuEx2b+pr24gqyWUAp66Bh08xhIXlxWP+ip01iOTifEEf/YS09zof97RClLaVsbiK4GNhkzj9No5KI+Zd1ojxRQSMjW2wEizNtRwPjsOs16nm3iqN368pjuc8cMRTsTeeCnueXyWauzgLnrSycPbWlE58dxN+ySnd8Uc0OHeZGBpthHnw0y/5ZlgFdICmQKN5nYrLdYE4G/OwOpRcR5dzasNnyst12iXN6zpSpSO0czuA+6jXWgrf7j12HTfVGBQRgdfwH1GNfKWmKn2VYP80PvLKAW66T/U2R4vy/Zh/szxOt7zWykVUAYzIYOBxmPjSZTIVqwGQP70x5AZFsZwffXu3vrWQpfn4g+dcALFKTNG5AimQSR6WIPlz6pGHET9YiViEJQwxaqeK0V+IlIgpuvACRDqG1Scf2QG7MDeggmBiCSbHNJ3/9Xh29Z6CvyBIbSVsC+kcQk6Y02CEF/sumzNbG6LyJY0TAVAMfLHcsH2iKerim/KXLbvQRFVZFJRESrOjcMba7pARL0/+PCKLdClECgXMc2egmUvgL/bZ4emgbJnJT1uUfLjJVP5hqRS5MdmsWznznfdvszgjBJ7J6OAMttZ+NdYz7Ozq2eYWnZ2ccpMGpYg8l4XUl+TfcQ+mmt1j18h2g/KPaOaorVZgSsqk/ElzkCghpSHlUTKry0qhlDpnkpjfl4L5qp6mIlLwqPbyFvuWupPT34G9FhTJ/7OIOImmxBWhay7Lv/yZ5yzE2ibg4iZF6BXFqZtKV0FYWf2PtcRoJcHNf+L5vHM6nw/spw8CObkWCJpZVkzwGlmHuLQOFSsjn0ryI2jRlb+i7Ksh1vxqSZOID3SC/MWlgiJ0qmTO0ob3DI1b36gI6XNxXG9IxZFQU5ZP3vGkiExgwxcnc4gqQTgj3EH9khyAJkVidOkJ4SV4aDH2wEwkDiGhSZFkqGZZUh/f9AVSk3tWyGEORAkuGXj2iAPnDoFkgF98nbbVL6PaaeWJxElMNNJKho+q/6o6xlwxQC4ThB99nyDTOhPDcwWIVvpyX4k+dYjL2vOcOakWAS3YG1aeUiYu9Z3JAej9gkL2M47xhCuiJXfkzuxAAwvIAFK6C2lSl7DzEd/gU6XpSAXb+mnkLhCHRsVNICOhemAzoWHsJvtTya1zh9zni9x6FYfkiFdXAlwmGPHKPdYbE8CA=="
+}
+
+###

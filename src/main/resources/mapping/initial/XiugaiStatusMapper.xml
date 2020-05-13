@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisino.mapper.initial.XiugaiStatusMapper" >
+
+
+
+    <update id="xiugaiStatus" parameterType="String">
+            update t_zls_zpglb set DATA_STATUS = '2'
+            where BY1=#{djhm}
+    </update>
+
+  <update id="updateFPZL" parameterType="String">
+      update t_sysorderhead set FPZL='51'
+      where OHID=#{ohid}
+  </update>
+
+    <select id="selectlineByohid" resultType="java.util.Map" parameterType="String">
+        select * from  t_sysorderline  where ohid=#{ohid}
+
+    </select>
+
+
+    <select id="selectohidList" resultType="java.util.Map" parameterType="String">
+        select * from t_sysorderhead     WHERE djhm=#{djhm}
+
+    </select>
+    <select id="selectXFXX" resultType="java.util.Map">
+            SELECT  t.XFMC,s.XFXXID FROM t_xfxx t,t_xfxx_zjb s
+             WHERE t. UUID= s.XFXXID AND s.userid=#{id}
+    </select>
+
+    <select id="selectXFXXID" resultType="java.util.Map" parameterType="String">
+        SELECT XFXXID FROM t_xfxx_zjb
+        WHERE USERID=#{id}
+    </select>
+    <select id="selectXFXXIDList" resultType="java.util.Map" parameterType="java.util.List">
+        select  XFMC,UUID from t_xfxx
+
+        where  UUID not in(
+        <foreach separator="," index="index" item="item" collection="list" close="" open="">
+           #{item.XFXXID}
+        </foreach>
+        )
+    </select>
+
+
+    <delete id="deleteXF" parameterType="java.util.List">
+        <foreach separator=";" index="index" item="item" collection="list" close="" open="">
+            delete from t_xfxx_zjb where
+            XFXXID=#{item.XFXXID} and USERID=#{item.USERID}
+        </foreach>
+
+    </delete>
+
+    <insert id="addXF" parameterType="java.util.List">
+        <foreach separator=";" index="index" item="item" collection="list" close="" open="">
+          insert into t_xfxx_zjb(UUID,USERID,XFXXID)
+          values(#{item.UUID},#{item.USERID},#{item.XFXXID})
+        </foreach>
+    </insert>
+
+    <select id="selectallXFXX" resultType="java.util.Map">
+      select  XFMC,UUID from t_xfxx
+    </select>
+    <select id="selectheadByohid" resultType="java.util.Map">
+         select * from  t_sysorderhead  where ohid=#{ohid}
+
+    </select>
+    <select id="selectchucuo" resultType="java.lang.String">
+        select ERRLOG from t_sysorderhead where OHID=#{ohid}
+    </select>
+
+</mapper>

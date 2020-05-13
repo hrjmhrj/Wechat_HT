@@ -1,0 +1,174 @@
+# 测试杨陈接口
+POST http://127.0.0.1:9010/aisino/receiveData
+Content-Type: application/json
+
+[
+  {
+    "kpMethod": "1",
+    "headInitial": {
+      "DJLX": "0",
+      "GFMC": "成都招商博时房地产开发有限公司",
+      "DJHM": "duyp7e7c792873c44451b1edc689a3a4e0213",
+      "BY1": "2518f2c5-8510-490c-ae01-17bdf4707c59",
+      "FPZL": "51",
+      "BY3": "dyp"
+    },
+    "lineInitialList": [
+      {
+        "HSBZ": "1",
+        "DW": "笔",
+        "SPMC": "自来水水费",
+        "SSFLBM": "1100301010000000000",
+        "SPHXZ": "0",
+        "SPXH": "2",
+        "JE": 10.09,
+        "BY1": "925497436",
+        "SLV": "3"
+      },
+      {
+        "GGXH": "12345678",
+        "HSBZ": "1",
+        "LSLBS": "1",
+        "SPMC": "自来水水费（污水处理费）",
+        "SSFLBM": "1100301010000000000",
+        "SPHXZ": "0",
+        "SPXH": "1",
+        "JE": 20.65,
+        "BY1": "925497436",
+        "SLV": "0"
+      }
+    ]
+  }
+]
+
+### 开票接口
+
+POST http://127.0.0.1:9010/aisino/aisino/kaiPiao?SIGN=0&username=张三&hptzd=123&FJID=123
+Content-Type: application/json
+
+[
+  {
+    "OHID": "12314cabea10619437193b93e8ed1ec5bab",
+    "DJHM": "62908e45-b71e-42d4-95d4-45a1e516795c",
+    "FPZL": "0"
+  }
+]
+
+###
+
+POST http://127.0.0.1:9010/aisino/aisino/ChuShiDataToDaiKaiPiao
+Content-Type: application/json
+
+[
+  {
+    "OHID": "12321ade1de06d44f41bf125da1dcadb258"
+  }
+]
+### 拆分
+
+POST http://127.0.0.1:9010/aisino/aisino/ChaiFenHang
+Content-Type: application/json
+
+{
+  "OHID": "12345fa69284a284b0f98c9cd4da6d9b291",
+  "OLID": "1237c736c25c8bd4f57abf9d0e435b3698d"
+}
+### 作废
+
+POST http://127.0.0.1:9010/aisino/aisino/zuoFei
+Content-Type: application/json
+
+[
+  {
+    "OHID": "12316f653730f1e4333859858ce6a73b0ad"
+  }
+]
+###
+# 查询未开页面
+POST http://127.0.0.1:9010/aisino/aisino/selecWeiKai
+Content-Type: application/json
+
+{
+  "page": "1",
+  "limit": "10",
+  # 用户类型 0:企业,1:普通用户,电脑端用户为3
+  "USER_TYPE": "1",
+  # 用户号-查询时传入
+  "S_CID": "925110214       ",
+  # 用户唯一id，企业则是用户表里面的唯一id，普通用户则是用户号
+  "YH_UUID": "925110214       ",
+  "startTime": "20191023",
+  "endTime": "20191026",
+  #  数据状态 0:未处理，1：已处理，2：已开具,3:数据已作废
+  "DATA_STATUS": "0",
+  ### 以下为电脑端才会用得到的查询条件
+  # 户名
+  "S_HM": "",
+  # 结算户名
+  "S_TouDiR": "",
+  # 收费员
+  "S_ShouFeiY": "",
+  # 区分消防字段,未开页面实际查询的就是站点号
+  "S_ST": ""
+
+}
+
+### 时间：DL_ShouFei；水费号：I_FEEID；用户号：S_CID
+### 购方名称:GFMC；水费：N_JE；污水费：N_PaiShuiF；违约金：N_ShiShouZNJ；
+
+
+###
+# 查询未开页面
+POST http://127.0.0.1:9010/aisino/aisino/selecWeiKai
+Content-Type: application/json
+
+{
+  "page": "1",
+  "limit": "10",
+  "USER_TYPE": "3",
+  "S_CID": "",
+  "YH_UUID": "",
+  "startTime": "",
+  "endTime": "",
+  "DATA_STATUS": "0"
+}
+
+### 生成待开发票
+###
+POST http://127.0.0.1:9010/aisino/aisino/shengCheng?FPZL=0
+Content-Type: application/json
+
+[
+  {
+    "I_FEEID": "34576339",
+    "GFMC": "何孝华"
+  },
+  {
+    "I_FEEID": "35581555",
+    "GFMC": "何孝华"
+  }
+]
+
+
+### 直接开票
+POST http://127.0.0.1:9010/aisino/aisino/kaiPiao
+Content-Type: application/json
+
+[
+  {
+    "OHID": "123168d7860e9b94a2592ec40a725c1a23b"
+  }
+]
+
+###
+### 撤回操作
+POST http://127.0.0.1:9010/aisino/aisino/cheHui
+Content-Type: application/json
+
+[
+  {
+    "DJHM": "duyp1eddc09f3846416ba29f01ada05be822"
+  }
+]
+
+###

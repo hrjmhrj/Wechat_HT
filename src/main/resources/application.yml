@@ -1,0 +1,30 @@
+spring:
+  thymeleaf.content-type: text/html
+  thymeleaf.cache: false
+  thymeleaf.mode: LEGACYHTML5
+  http:
+      multipart:
+        maxFileSize: 50Mb
+        maxRequestSize: 50Mb
+  profiles:
+    active: dev
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml
+  type-aliases-package: com.aisino.entity
+  configuration:
+    call-setters-on-nulls: true
+
+# pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+#允许优雅中止项目
+endpoints:
+  shutdown:
+    enabled: true
+    path: /duyiping
+    sensitive: false
+
