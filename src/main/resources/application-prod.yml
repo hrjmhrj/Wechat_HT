@@ -1,7 +1,7 @@
 server:
   # 端口号
-  port: 9010
-  context-path: /aisino/
+  port: 9017
+  context-path: /test/
 eureka:
   client:
     serviceUrl:
@@ -15,7 +15,7 @@ spring:
     #url: jdbc:mysql://fptypt.schtxxcdfgs.com:8004/kpfwvue?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     url: jdbc:mysql://39.97.74.131:3306/kpfwvue?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
-    password: Rootroot!1
+    password: ROOTroot!1
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver

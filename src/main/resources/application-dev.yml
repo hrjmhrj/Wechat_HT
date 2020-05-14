@@ -1,7 +1,7 @@
 server:
   # 端口号
-  port: 9010
-  context-path: /zitest/
+  port: 9017
+  context-path: /aisino/
 spring:
     application:
       name: service-zls
