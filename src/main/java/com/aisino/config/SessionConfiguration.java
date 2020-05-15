@@ -15,16 +15,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class SessionConfiguration extends WebMvcConfigurerAdapter
 {
-//   @Override
-//   public void addInterceptors(InterceptorRegistry registry) {
-//       registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/aisino/**").addPathPatterns("/mobile/**")
-//               .excludePathPatterns("/aisino/*No").excludePathPatterns("/*No")
-//               .excludePathPatterns("/aisino/loginPage").excludePathPatterns("/aisino/checkLogin")
-//               .excludePathPatterns("/aisino/selectAllBtnById").excludePathPatterns("/aisino/getMenu")
-//               .excludePathPatterns("/aisino/receiveData").excludePathPatterns("/mobile/ywUserheckLogin")
-//               .excludePathPatterns("/aisino/orderhead/getPdf").excludePathPatterns("/aisino/orderhead/downloadTemplate")
-//               .excludePathPatterns("/aisino/orderhead/uploadGfxx");
-//   }
+   @Override
+   public void addInterceptors(InterceptorRegistry registry) {
+       System.out.println("session先执行");
+       registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/aisino/**").addPathPatterns("/mobile/**")
+               .excludePathPatterns("/aisino/*No").excludePathPatterns("/*No")
+               .excludePathPatterns("/aisino/loginPage").excludePathPatterns("/aisino/checkLogin")
+               .excludePathPatterns("/aisino/selectAllBtnById").excludePathPatterns("/aisino/getMenu")
+               .excludePathPatterns("/aisino/receiveData").excludePathPatterns("/mobile/ywUserheckLogin")
+               .excludePathPatterns("/aisino/orderhead/getPdf").excludePathPatterns("/aisino/orderhead/downloadTemplate")
+               .excludePathPatterns("/aisino/orderhead/uploadGfxx");
+   }
 
     @Bean
     public static HandlerInterceptor getHandlerInterceptor() {

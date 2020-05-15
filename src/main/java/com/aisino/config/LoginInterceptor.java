@@ -42,6 +42,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+		System.out.println("interceptor后执行");
 		//当前token
 		String token = request.getHeader("gyxxfpnekot");
 
@@ -83,7 +84,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 			return false;
 		}else{
 			//判断是否有接口权限
+			System.out.println("====");
 			System.out.println(mm.get(token).get("requestResoult"));
+			System.out.println("-----------------");
 			if(!((List)mm.get(token).get("requestResoult")).contains(urlPathStrings)){
 				returnMessage(response,88888,"你没有访问该功能的权限。","确定","确定","warning");
 				return false;
