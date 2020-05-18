@@ -3,7 +3,7 @@
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
     <!--把日志生成设置成绝对地址,位于项目运行的更目录下的日志文件夹下-->
     <property name="LOG_HOME" value="/aisinologs"/>
-    <property name="projectName" value="zls"/>
+    <property name="projectName" value="zitest_ht"/>
     <property name="AppName" value="aisinoLog"/>
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
