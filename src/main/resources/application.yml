@@ -27,4 +27,7 @@ endpoints:
     enabled: true
     path: /duyiping
     sensitive: false
+file:
+  defaultPath: /springboot/zcgl/
+
 

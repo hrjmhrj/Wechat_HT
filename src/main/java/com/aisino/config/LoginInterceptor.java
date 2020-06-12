@@ -42,6 +42,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+		if(1==1){
+			return  true;
+		}
 		System.out.println("interceptor后执行");
 		//当前token
 		String token = request.getHeader("gyxxfpnekot");
@@ -51,6 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		String urlPathStrings = "/"+requestUrlString.split("/aisino/")[1];
 		//登出
 		LOGGER.info("解析后路径 "+urlPathStrings+"当前路径"+token);
+
 		if("/aisino/loginOut".equals(urlPathStrings)){
 			//删除token
 			ms.remove(mm.get(token).get("userid"));

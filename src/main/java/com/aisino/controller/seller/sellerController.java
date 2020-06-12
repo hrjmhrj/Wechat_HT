@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RequestMapping("/aisino")
 @Controller
@@ -132,6 +131,44 @@ public class sellerController {
         xiugaiStatusMapper.addXF(list);
     }
 
+
+    @RequestMapping("/testjiekou")
+    @ResponseBody()
+    public void testjiekou(@RequestBody Map<String, String> map) throws ParseException {
+        System.out.println("测试接口的参数");
+        System.out.println(map);
+
+//        double time2 = 1515730332000d;
+        //double time2 =Double.parseDouble( map.get("time"));
+
+        //String result2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(time2);
+        //System.out.println("13位数的时间戳（毫秒）--->Date:" + result2);
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());
+        System.out.println("后台获取的时间");
+        System.out.println(date);
+
+
+        /*SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, -1);
+        Date y = c.getTime();
+        String year = format.format(y);
+        System.out.println("过去一年："+year);*/
+
+        int dayCount = 1;
+        Long endTime = System.currentTimeMillis();
+        System.out.println("....................");
+        System.out.println(endTime);
+        Long startTime = endTime - (dayCount * 24 * 60 * 60 * 1000L);
+        System.out.println("=========");
+        String result2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startTime);
+        System.out.println(result2);
+
+
+    }
 
 
 

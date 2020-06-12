@@ -29,6 +29,8 @@ public class LoginContorller {
     LoginMapper loginMapper;
 	@Resource
 	private QuanXianMapper quanXianMapper;
+
+
 	/**
 	 *
 	 * @Title: login

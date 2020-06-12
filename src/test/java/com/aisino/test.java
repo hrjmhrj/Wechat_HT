@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import redis.clients.jedis.Jedis;
+
 
 
 /**
@@ -19,9 +19,9 @@ public class test {
 
     @Test
     public void testredis() {
-         Jedis jedis = new Jedis("39.97.74.131", 6379);
-        String aa = jedis.get("a");
-        System.out.println(aa);
+        //Jedis jedis = new Jedis("39.97.74.131", 6379);
+        //String aa = jedis.get("a");
+        //System.out.println(aa);
     }
 
 

@@ -37,6 +37,8 @@ public class UserController {
 	@RequestMapping("/saveUser")
 	@ResponseBody
 	public Json insertUser(@RequestBody Map<String,String> map){
+		System.out.println("添加用户的参数");
+		System.out.println(map);
 		Json json = new Json();
 		try{
 			String USERNAME = map.get("USERNAME");
