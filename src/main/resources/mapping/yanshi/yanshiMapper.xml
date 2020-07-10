@@ -3,6 +3,10 @@
 <mapper namespace="com.aisino.mapper.yanshimapper.yanshiMapper">
 
     <select id="selectYanshidata" resultType="java.util.Map">
-        select * from t_sysorderhead_initial_copy
+        select * from t_sysorderhead_initial_copy where 1=1
+        <if test="GFMC != null and GFMC != ''">
+            and GFMC like concat( '%',#{GFMC,jdbcType=VARCHAR},'%')
+        </if>
+
     </select>
 </mapper>

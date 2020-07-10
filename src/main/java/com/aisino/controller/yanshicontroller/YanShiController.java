@@ -64,53 +64,6 @@ public class YanShiController {
     }
 
 
-
-
-
-
-    /**
-     * base64字符串转化成图片
-     * @param imgString 图片编码
-     * @return 对字节数组字符串进行Base64解码并生成图片
-     * @throws IOException
-     */
-    @RequestMapping("base64Toimg")
-    @ResponseBody
-    public Json base64Toimg(@RequestBody Map<String, String> imgString) {
-        //图像数据为空
-        if (imgString.get("imgStr") == null) {
-            return new Json(false, "未获取到签名信息,签名失败", "");
-        }
-        String imgStr = imgString.get("imgStr").split(",")[1];
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String date = df.format(new Date());
-        String imgFilePath =fileRootPath+"img/";
-        if (!new File(imgFilePath).exists()) {
-            new File(imgFilePath).mkdirs();
-        }
-        String imgFilePathandname =imgFilePath + date +".jpg";
-        BASE64Decoder decoder = new BASE64Decoder();
-        try {
-            //Base64解码
-            byte[] b = decoder.decodeBuffer(imgStr);
-            for (int i = 0; i < b.length; ++i) {
-                if (b[i] < 0) {
-                    //调整异常数据
-                    b[i] += 256;
-                }
-            }
-            OutputStream out = new FileOutputStream(imgFilePathandname);
-            out.write(b);
-            out.flush();
-            out.close();
-            return new Json(true, "签名成功", imgFilePathandname);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Json(false, "服务器异常,签名失败", "");
-        }
-    }
-
-
     //easyExcel不创建对象导出
     @RequestMapping("exportExcel")
     public void exportExcel(HttpServletResponse response, @RequestBody List<Map<String, String>> list) throws Exception {

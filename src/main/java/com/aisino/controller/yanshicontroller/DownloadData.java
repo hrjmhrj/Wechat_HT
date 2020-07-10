@@ -22,7 +22,7 @@ public class DownloadData {
         private String OHID;
         @ExcelProperty(value = {"主标题","主标题","复核人"},index = 1)
         private String FHR;
-        //@ColumnWidth(40)
+        @ColumnWidth(40)
         @ExcelProperty(value = {"主标题","主标题","UPDATETIME"},index = 2)
         private String UPDATETIME;
 

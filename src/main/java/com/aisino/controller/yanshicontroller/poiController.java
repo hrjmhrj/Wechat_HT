@@ -18,11 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RequestMapping("/aisino")
 @RestController
@@ -106,10 +104,68 @@ public class poiController {
 
 
 
+    @RequestMapping("/TestTime")
+    @ResponseBody
+    public void TestTime(@RequestBody Map<String, String> map)  {
+
+        /*Date date = new Date();
+        SimpleDateFormat dateFm = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun = dateFm.format(date);
+        System.out.println("当前时间是星期几");
+        System.out.println(currSun);*/
 
 
 
+        Calendar calendar1 = Calendar.getInstance();
+        //calendar1.add(Calendar.DATE, -1); //得到前一bai天
+        Date date1 = calendar1.getTime();
+        DateFormat df1 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun1 = df1.format(date1);
+        System.out.println(currSun1.toLowerCase());
 
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.add(Calendar.DATE, -1); //得到前一bai天
+        Date date2 = calendar2.getTime();
+        DateFormat df2 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun2 = df2.format(date2);
+        System.out.println(currSun2.toLowerCase());
+
+        Calendar calendar3 = Calendar.getInstance();
+        calendar3.add(Calendar.DATE, -2); //得到前一bai天
+        Date date3 = calendar3.getTime();
+        DateFormat df3 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun3 = df3.format(date3);
+        System.out.println(currSun3.toLowerCase());
+
+        Calendar calendar4 = Calendar.getInstance();
+        calendar4.add(Calendar.DATE, -3); //得到前一bai天
+        Date date4 = calendar4.getTime();
+        DateFormat df4 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun4 = df4.format(date4);
+        System.out.println(currSun4.toLowerCase());
+
+        Calendar calendar5 = Calendar.getInstance();
+        calendar5.add(Calendar.DATE, -4); //得到前一bai天
+        Date date5 = calendar5.getTime();
+        DateFormat df5 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun5 = df1.format(date5);
+        System.out.println(currSun5.toLowerCase());
+
+        Calendar calendar6 = Calendar.getInstance();
+        calendar6.add(Calendar.DATE, -5); //得到前一bai天
+        Date date6 = calendar6.getTime();
+        DateFormat df6 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun6 = df6.format(date6);
+        System.out.println(currSun6.toLowerCase());
+
+        Calendar calendar7 = Calendar.getInstance();
+        calendar7.add(Calendar.DATE, -6); //得到前一bai天
+        Date date7 = calendar7.getTime();
+        DateFormat df7 = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        String currSun7= df7.format(date7);
+        System.out.println(currSun7.toLowerCase());
+
+    }
 
 
 
