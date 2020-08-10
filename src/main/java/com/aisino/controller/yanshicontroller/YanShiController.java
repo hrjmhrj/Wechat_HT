@@ -5,15 +5,15 @@ import com.aisino.service.seller.yanshiservice.yanshiService;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
-import org.apache.ibatis.annotations.Param;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.misc.BASE64Decoder;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -125,8 +125,42 @@ public class YanShiController {
 
 
 
+    @RequestMapping("/PDFdownload")
+    @ResponseBody
+    public Json PDFdownload(@RequestBody Map<String, String> hm) {
+        String fileUrl=hm.get("url");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        String date = df.format(new Date());
+        System.out.println("data获取的值");
+        System.out.println(date);
+        String fileLocal=fileRootPath  + "pdf/" +date+"/";
+        System.out.println("fileLocal的值");
+        System.out.println(fileLocal);
+        try {
+            URL httpurl = new URL(fileUrl);
+            String fileName = getFileNameFromUrl(fileUrl);
+            System.out.println(fileName);
+            File f = new File(fileLocal + fileName);
+            FileUtils.copyURLToFile(httpurl, f);
+
+            return new Json(true, "下载保存成功","localhost:80"+fileLocal + fileName);
+        } catch (Exception e) {
+          e.printStackTrace();
+            return new Json(false, "下载保存失败","" );
+        }
+    }
 
 
-
+    public static String getFileNameFromUrl(String url){
+        String name = new Long(System.currentTimeMillis()).toString() + ".X";
+        int index = url.lastIndexOf("/");
+        if(index > 0){
+            name = url.substring(index + 1);
+            if(name.trim().length()>0){
+                return name;
+            }
+        }
+        return name;
+    }
 
 }

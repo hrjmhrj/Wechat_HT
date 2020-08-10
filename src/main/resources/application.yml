@@ -28,6 +28,6 @@ endpoints:
     path: /duyiping
     sensitive: false
 file:
-  defaultPath: /springboot/zcgl/
+  defaultPath: /springboot/zlspdf/
 
 
