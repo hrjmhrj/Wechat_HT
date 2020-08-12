@@ -1,6 +1,7 @@
 package com.aisino.mapper.system;
 
 import com.aisino.entity.system.Role;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
 /**
  * 角色管理的dao层
@@ -9,6 +10,7 @@ import com.aisino.entity.system.Role;
  *
  */
 
+@DS("slave")
 public interface RoleMapper {
 	
 	/**

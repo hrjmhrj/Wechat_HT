@@ -6,14 +6,29 @@ spring:
     application:
       name: service-zls
     datasource:
-        name: test
-        # 数据库连接
-        url: jdbc:mysql://localhost:3306/kpfwvue?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
-        username: root
-        password: root
-        # 使用druid数据源
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
+      dynamic:
+        primary: master #设置默认的数据源或者数据源组,默认值即为master
+        datasource:
+          master: #自建oracle数据库
+            url: jdbc:oracle:thin:@192.168.88.160:1521/CDFGSDB
+            username: tfhtds
+            password: tfhtds123
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+          slave: #权限框架mysql库
+            url: jdbc:mysql://fptypt.schtxxcdfgs.com:8004/wechat?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+            username: root
+            password: Root!!2018
+            type: com.alibaba.druid.pool.DruidDataSource
+            driver-class-name: com.mysql.jdbc.Driver
+#    datasource:
+#        name: test
+#        # 数据库连接
+#        url: jdbc:mysql://fptypt.schtxxcdfgs.com:8004/kpfwvue?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+#        username: root
+#        password: Root!!2018
+#        # 使用druid数据源
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driver-class-name: com.mysql.jdbc.Driver
         filters: stat
         # 最大活跃连接数
         maxActive: 20
@@ -56,3 +71,8 @@ logging:
 # 蓉票儿同步接口
 #rongpiaoer.tongbu: https://api-rpr.yewifi.com/life-service/callback?appkey=91510100395911836B
 #rongpiaoer.rongPiaoErGongYao: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEya44tKWYg3nGpWIr3fVTCJM//RX3uR5pzY3tUGeviW5pOl42sLbJ/MyaBqNqbEXqEUwn0Kx3ipYnVD7qcplpA0hXxKX7lReBu1l5jNDHnOcBWmSSbYb/5UeLskdiX11ofTtz3oRzJwPCBAyR7MXVXTsMIVE81Aree1/ugcJNPQIDAQAB
+#简阳发票pdf本地保存路径
+jianyang.filepath: /springboot/zlspdf/
+jianyang.port: localhost:80
+#基路径
+rootFilePath: /wechatpay-upload/

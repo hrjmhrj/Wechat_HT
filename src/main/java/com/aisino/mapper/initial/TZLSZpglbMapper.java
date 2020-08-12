@@ -1,9 +1,12 @@
 package com.aisino.mapper.initial;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@DS("slave")
 public interface TZLSZpglbMapper {
 
 

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisino.mapper.initial.Txfxx_pluseMapper" >
+  <resultMap id="BaseResultMap" type="com.aisino.entity.initial.Txfxx_pluse" >
+    <id column="UUID" property="UUID" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="CREATETIME" jdbcType="TIMESTAMP" />
+    <result column="UPDATETIME" property="UPDATETIME" jdbcType="TIMESTAMP" />
+    <result column="XFMC" property="XFMC" jdbcType="VARCHAR" />
+    <result column="XFSH" property="XFSH" jdbcType="VARCHAR" />
+    <result column="XFYHZH" property="XFYHZH" jdbcType="VARCHAR" />
+    <result column="XFDZDH" property="XFDZDH" jdbcType="VARCHAR" />
+    <result column="terminalCode" property="terminalCode" jdbcType="VARCHAR" />
+    <result column="appId" property="appId" jdbcType="VARCHAR" />
+    <result column="authorizationCode" property="authorizationCode" jdbcType="VARCHAR" />
+    <result column="requestCode" property="requestCode" jdbcType="VARCHAR" />
+    <result column="sigCode" property="sigCode" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="fjh" property="fjh" jdbcType="VARCHAR" />
+    <result column="jqbh" property="jqbh" jdbcType="VARCHAR" />
+    <result column="serverUrl" property="serverUrl" jdbcType="VARCHAR" />
+    <result column="KPR" property="KPR" jdbcType="VARCHAR" />
+    <result column="SKR" property="SKR" jdbcType="VARCHAR" />
+    <result column="FHR" property="FHR" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="valid" property="valid" jdbcType="VARCHAR" />
+    <result column="BY1" property="BY1" jdbcType="VARCHAR" />
+    <result column="BY2" property="BY2" jdbcType="VARCHAR" />
+    <result column="BY3" property="BY3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UUID, CREATETIME, UPDATETIME, XFMC, XFSH, XFYHZH, XFDZDH, terminalCode, appId, authorizationCode, 
+    requestCode, sigCode, password, token, fjh, jqbh, serverUrl, KPR, SKR, FHR, identity, 
+    phone, valid, BY1, BY2, BY3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_xfxx
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_xfxx
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+    insert into t_xfxx (UUID, CREATETIME, UPDATETIME, 
+      XFMC, XFSH, XFYHZH, 
+      XFDZDH, terminalCode, appId, 
+      authorizationCode, requestCode, sigCode, 
+      password, token, fjh, 
+      jqbh, serverUrl, KPR, 
+      SKR, FHR, identity, 
+      phone, valid, BY1, 
+      BY2, BY3)
+    values (#{UUID,jdbcType=VARCHAR}, #{CREATETIME,jdbcType=TIMESTAMP}, #{UPDATETIME,jdbcType=TIMESTAMP}, 
+      #{XFMC,jdbcType=VARCHAR}, #{XFSH,jdbcType=VARCHAR}, #{XFYHZH,jdbcType=VARCHAR}, 
+      #{XFDZDH,jdbcType=VARCHAR}, #{terminalCode,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{authorizationCode,jdbcType=VARCHAR}, #{requestCode,jdbcType=VARCHAR}, #{sigCode,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{fjh,jdbcType=VARCHAR}, 
+      #{jqbh,jdbcType=VARCHAR}, #{serverUrl,jdbcType=VARCHAR}, #{KPR,jdbcType=VARCHAR}, 
+      #{SKR,jdbcType=VARCHAR}, #{FHR,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{valid,jdbcType=VARCHAR}, #{BY1,jdbcType=VARCHAR}, 
+      #{BY2,jdbcType=VARCHAR}, #{BY3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+    insert into t_xfxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="UUID != null" >
+        UUID,
+      </if>
+      <if test="CREATETIME != null" >
+        CREATETIME,
+      </if>
+      <if test="UPDATETIME != null" >
+        UPDATETIME,
+      </if>
+      <if test="XFMC != null" >
+        XFMC,
+      </if>
+      <if test="XFSH != null" >
+        XFSH,
+      </if>
+      <if test="XFYHZH != null" >
+        XFYHZH,
+      </if>
+      <if test="XFDZDH != null" >
+        XFDZDH,
+      </if>
+      <if test="terminalCode != null" >
+        terminalCode,
+      </if>
+      <if test="appId != null" >
+        appId,
+      </if>
+      <if test="authorizationCode != null" >
+        authorizationCode,
+      </if>
+      <if test="requestCode != null" >
+        requestCode,
+      </if>
+      <if test="sigCode != null" >
+        sigCode,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="fjh != null" >
+        fjh,
+      </if>
+      <if test="jqbh != null" >
+        jqbh,
+      </if>
+      <if test="serverUrl != null" >
+        serverUrl,
+      </if>
+      <if test="KPR != null" >
+        KPR,
+      </if>
+      <if test="SKR != null" >
+        SKR,
+      </if>
+      <if test="FHR != null" >
+        FHR,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="BY1 != null" >
+        BY1,
+      </if>
+      <if test="BY2 != null" >
+        BY2,
+      </if>
+      <if test="BY3 != null" >
+        BY3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="UUID != null" >
+        #{UUID,jdbcType=VARCHAR},
+      </if>
+      <if test="CREATETIME != null" >
+        #{CREATETIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="UPDATETIME != null" >
+        #{UPDATETIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="XFMC != null" >
+        #{XFMC,jdbcType=VARCHAR},
+      </if>
+      <if test="XFSH != null" >
+        #{XFSH,jdbcType=VARCHAR},
+      </if>
+      <if test="XFYHZH != null" >
+        #{XFYHZH,jdbcType=VARCHAR},
+      </if>
+      <if test="XFDZDH != null" >
+        #{XFDZDH,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalCode != null" >
+        #{terminalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationCode != null" >
+        #{authorizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="requestCode != null" >
+        #{requestCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sigCode != null" >
+        #{sigCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="fjh != null" >
+        #{fjh,jdbcType=VARCHAR},
+      </if>
+      <if test="jqbh != null" >
+        #{jqbh,jdbcType=VARCHAR},
+      </if>
+      <if test="serverUrl != null" >
+        #{serverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="KPR != null" >
+        #{KPR,jdbcType=VARCHAR},
+      </if>
+      <if test="SKR != null" >
+        #{SKR,jdbcType=VARCHAR},
+      </if>
+      <if test="FHR != null" >
+        #{FHR,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="BY1 != null" >
+        #{BY1,jdbcType=VARCHAR},
+      </if>
+      <if test="BY2 != null" >
+        #{BY2,jdbcType=VARCHAR},
+      </if>
+      <if test="BY3 != null" >
+        #{BY3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+    update t_xfxx
+    <set >
+      <if test="CREATETIME != null" >
+        CREATETIME = #{CREATETIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="UPDATETIME != null" >
+        UPDATETIME = #{UPDATETIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="XFMC != null" >
+        XFMC = #{XFMC,jdbcType=VARCHAR},
+      </if>
+      <if test="XFSH != null" >
+        XFSH = #{XFSH,jdbcType=VARCHAR},
+      </if>
+      <if test="XFYHZH != null" >
+        XFYHZH = #{XFYHZH,jdbcType=VARCHAR},
+      </if>
+      <if test="XFDZDH != null" >
+        XFDZDH = #{XFDZDH,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalCode != null" >
+        terminalCode = #{terminalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        appId = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationCode != null" >
+        authorizationCode = #{authorizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="requestCode != null" >
+        requestCode = #{requestCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sigCode != null" >
+        sigCode = #{sigCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="fjh != null" >
+        fjh = #{fjh,jdbcType=VARCHAR},
+      </if>
+      <if test="jqbh != null" >
+        jqbh = #{jqbh,jdbcType=VARCHAR},
+      </if>
+      <if test="serverUrl != null" >
+        serverUrl = #{serverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="KPR != null" >
+        KPR = #{KPR,jdbcType=VARCHAR},
+      </if>
+      <if test="SKR != null" >
+        SKR = #{SKR,jdbcType=VARCHAR},
+      </if>
+      <if test="FHR != null" >
+        FHR = #{FHR,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="BY1 != null" >
+        BY1 = #{BY1,jdbcType=VARCHAR},
+      </if>
+      <if test="BY2 != null" >
+        BY2 = #{BY2,jdbcType=VARCHAR},
+      </if>
+      <if test="BY3 != null" >
+        BY3 = #{BY3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+    update t_xfxx
+    set CREATETIME = #{CREATETIME,jdbcType=TIMESTAMP},
+      UPDATETIME = #{UPDATETIME,jdbcType=TIMESTAMP},
+      XFMC = #{XFMC,jdbcType=VARCHAR},
+      XFSH = #{XFSH,jdbcType=VARCHAR},
+      XFYHZH = #{XFYHZH,jdbcType=VARCHAR},
+      XFDZDH = #{XFDZDH,jdbcType=VARCHAR},
+      terminalCode = #{terminalCode,jdbcType=VARCHAR},
+      appId = #{appId,jdbcType=VARCHAR},
+      authorizationCode = #{authorizationCode,jdbcType=VARCHAR},
+      requestCode = #{requestCode,jdbcType=VARCHAR},
+      sigCode = #{sigCode,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      fjh = #{fjh,jdbcType=VARCHAR},
+      jqbh = #{jqbh,jdbcType=VARCHAR},
+      serverUrl = #{serverUrl,jdbcType=VARCHAR},
+      KPR = #{KPR,jdbcType=VARCHAR},
+      SKR = #{SKR,jdbcType=VARCHAR},
+      FHR = #{FHR,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=VARCHAR},
+      BY1 = #{BY1,jdbcType=VARCHAR},
+      BY2 = #{BY2,jdbcType=VARCHAR},
+      BY3 = #{BY3,jdbcType=VARCHAR}
+    where UUID = #{UUID,jdbcType=VARCHAR}
+  </update>
+</mapper>

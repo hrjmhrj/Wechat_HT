@@ -1,10 +1,12 @@
 package com.aisino.mapper.initial;
 
 import com.aisino.entity.initial.TXfxxZjb;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
 import java.util.HashMap;
 import java.util.List;
 
+@DS("slave")
 public interface TXfxxZjbMapper {
     /**
      * 解除用户与销方的关联

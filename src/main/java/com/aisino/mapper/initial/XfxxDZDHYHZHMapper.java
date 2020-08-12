@@ -1,9 +1,11 @@
 package com.aisino.mapper.initial;
 
 import com.aisino.entity.initial.XfxxDZDHYHZH;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
 import java.util.HashMap;
 
+@DS("slave")
 public interface XfxxDZDHYHZHMapper {
     int insert(XfxxDZDHYHZH record);
 

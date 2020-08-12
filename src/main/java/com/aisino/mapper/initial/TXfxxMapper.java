@@ -1,12 +1,14 @@
 package com.aisino.mapper.initial;
 
 import com.aisino.entity.initial.TXfxx;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 import java.util.Map;
 
+@DS("slave")
 public interface TXfxxMapper {
     int deleteByPrimaryKey(String UUID);
 

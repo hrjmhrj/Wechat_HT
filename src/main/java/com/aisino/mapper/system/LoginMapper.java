@@ -1,6 +1,7 @@
 package com.aisino.mapper.system;
 
 import com.aisino.entity.system.Menu;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Map;
  * @date 2018年12月21日
  *
  */
-
+@DS("slave")
 public interface LoginMapper {
 	/**
 	 * 

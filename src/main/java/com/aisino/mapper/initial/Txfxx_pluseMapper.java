@@ -1,7 +1,9 @@
 package com.aisino.mapper.initial;
 
 import com.aisino.entity.initial.Txfxx_pluse;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
+@DS("slave")
 public interface Txfxx_pluseMapper {
     int deleteByPrimaryKey(String UUID);
 

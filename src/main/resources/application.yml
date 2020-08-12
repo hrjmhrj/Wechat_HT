@@ -5,12 +5,16 @@ spring:
   http:
       multipart:
         maxFileSize: 50Mb
-        maxRequestSize: 50Mb
+        maxRequestSize: 100Mb
   profiles:
     active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #响应时间统一格式化
+    time-zone: GMT+8
 # mybatis配置
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
   type-aliases-package: com.aisino.entity
   configuration:
     call-setters-on-nulls: true
@@ -29,5 +33,6 @@ endpoints:
     sensitive: false
 file:
   defaultPath: /springboot/zlspdf/
+
 
 

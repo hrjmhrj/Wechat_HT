@@ -1,8 +1,11 @@
 package com.aisino.mapper.seller;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
+
 import java.util.HashMap;
 import java.util.List;
 
+@DS("slave")
 public interface XfxxZjbMapper {
     /**
      * 解除用户与销方的关联

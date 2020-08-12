@@ -1,83 +1,107 @@
 package com.aisino;
 
 
+import com.aisino.entity.system.Json;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UrlToPdf {
 
-        /**
-         * 从网络Url中下载文件
-         * @param urlStr         pdf网页的url
-         * @param fileName       下载到本地的文件名
-         * @param savePath		 下载路径
-         * @throws IOException    抛出异常
-         */
-        public static void  downLoadByUrl(String urlStr,String fileName,String savePath) throws IOException {
-            urlStr="https://inv.jss.com.cn/group5/M00/04/16/wKj6zl8g3EGIPSIeAACBjDH17lMAAZ63AAJDzAAAIGk354.pdf";
-            fileName="wKj6zl8g3EGIPSIeAACBjDH17lMAAZ63AAJDzAAAIGk354.pdf";
-            savePath="D:/file/";
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-            //设置超时间为3秒
-            conn.setConnectTimeout(5*1000);
-            //防止屏蔽程序抓取而返回403错误
-            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-            //得到输入流
-            InputStream inputStream = conn.getInputStream();
-            //获取自己数组
-            byte[] getData = readInputStream(inputStream);
-            //文件保存位置
-            File saveDir = new File(savePath);
-            if(!saveDir.exists()){
-                saveDir.mkdir();
-            }
-            File file = new File(saveDir+File.separator+fileName);
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(getData);
-            if(fos!=null){
-                fos.close();
-            }
-            if(inputStream!=null){
-                inputStream.close();
-            }
-            System.out.println("info:"+url+" download success");
+    @Value("${file.defaultPath}")
+    private String fileRootPath;
 
+    @Value("${server.port}")
+    private String serverport;
+
+    @Value("${jianyang.filepath}")
+    private String jianyangfilepath;
+
+    @Value("${jianyang.port}")
+    private String jianyangport;
+
+
+        public Json PDFdownload(@RequestBody Map<String, String> hm) {
+
+            String fileUrl=hm.get("url");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            String date = df.format(new Date());
+            System.out.println("data获取的值");
+            System.out.println(date);
+            String fileLocal=fileRootPath  + "pdf/" +date+"/";
+            System.out.println("fileLocal的值");
+            System.out.println(fileLocal);
+            try {
+                URL httpurl = new URL(fileUrl);
+                String fileName = getFileNameFromUrl(fileUrl);
+                System.out.println(fileName);
+                File f = new File(fileLocal + fileName);
+                FileUtils.copyURLToFile(httpurl, f);
+
+                return new Json(true, "下载保存成功","localhost:80"+fileLocal + fileName);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new Json(false, "下载保存失败","" );
+            }
         }
 
-        /**
-         * 从输入流中获取字节数组
-         * @param inputStream
-         * @return
-         * @throws IOException
-         */
-        public static  byte[] readInputStream(InputStream inputStream) throws IOException {
-            byte[] buffer = new byte[1024];
-            int len = 0;
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            while((len = inputStream.read(buffer)) != -1) {
-                bos.write(buffer, 0, len);
+
+    public static String getFileNameFromUrl(String url){
+        String name = new Long(System.currentTimeMillis()).toString() + ".pdf";
+        int index = url.lastIndexOf("/");
+        if(index > 0){
+            name = url.substring(index + 1);
+            if(name.trim().length()>0){
+                return name;
             }
-            bos.close();
-            return bos.toByteArray();
+        }
+        return name;
+    }
+
+    @Test
+    public void urltopdf(){
+        System.out.println("jianyangfilepath===");
+        System.out.println(jianyangfilepath);
+        System.out.println(jianyangport);
+        String fileUrl="https://inv.jss.com.cn/group5/M01/01/15/wKj6zl8eTtaICcFtAACBiIaWfvkAAZU0QDEKl0AAIGg455.pdf";
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        String date = df.format(new Date());
+        System.out.println("data获取的值");
+        System.out.println(date);
+        String fileLocal=jianyangfilepath  +date+"/";
+        System.out.println("fileLocal的值");
+        System.out.println(fileLocal);
+        try {
+            URL httpurl = new URL(fileUrl);
+            String fileName = getFileNameFromUrl(fileUrl);
+            System.out.println(fileName);
+            File f = new File(fileLocal + fileName);
+            FileUtils.copyURLToFile(httpurl, f);
+            System.out.println("保存的路径");
+
+            System.out.println(jianyangport+fileLocal + fileName);
+            //return new Json(true, "下载保存成功","localhost:80"+fileLocal + fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //return new Json(false, "下载保存失败","" );
         }
 
-        public static void main(String[] args) {
-            try{
-                downLoadByUrl("https://inv.jss.com.cn/group5/M00/04/16/wKj6zl8g3EGIPSIeAACBjDH17lMAAZ63AAJDzAAAIGk354.pdf",
-                        "ELISA.pdf","D:/file/");
-            }catch (Exception e) {
-                // TODO: handle exception
-            }
-        }
+    }
+
     }
 
 

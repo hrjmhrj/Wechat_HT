@@ -1,7 +1,9 @@
 package com.aisino.mapper.initial;
 
 import com.aisino.entity.initial.TPeizhi;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
+@DS("slave")
 public interface TPeizhiMapper {
     int deleteByPrimaryKey(String UUID);
 

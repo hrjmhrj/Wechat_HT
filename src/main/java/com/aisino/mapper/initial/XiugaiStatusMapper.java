@@ -1,11 +1,13 @@
 package com.aisino.mapper.initial;
 
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
 
+@DS("slave")
 public interface XiugaiStatusMapper {
 
     void xiugaiStatus(String djhm);

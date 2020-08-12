@@ -1,8 +1,11 @@
 package com.aisino.mapper.system;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
+
 import java.util.List;
 import java.util.Map;
 
+@DS("slave")
 public interface QuanXianMapper {
 	
 	List<String>selectAllFunByUserName(String ID);

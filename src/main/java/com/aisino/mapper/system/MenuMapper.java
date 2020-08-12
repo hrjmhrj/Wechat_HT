@@ -1,6 +1,7 @@
 package com.aisino.mapper.system;
 
 import com.aisino.entity.system.Menu;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.github.pagehelper.Page;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
  *
  */
 
+@DS("slave")
 public interface MenuMapper {
 	
 	/**

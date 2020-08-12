@@ -1,10 +1,12 @@
 package com.aisino.mapper.seller;
 
 import com.aisino.entity.initial.TPeizhi;
+import com.baomidou.dynamic.datasource.annotation.DS;
 
 import java.util.HashMap;
 import java.util.List;
 
+@DS("slave")
 public interface PeiZhiMapper {
     List<TPeizhi> selectOnePeiZhi();
 

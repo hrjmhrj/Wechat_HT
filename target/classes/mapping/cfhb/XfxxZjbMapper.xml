@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisino.mapper.seller.XfxxZjbMapper">
+    <update id="updataXfxxId">
+        update t_xfxx_zjb
+        set XFXXID=#{MODIFYUUID,jdbcType=VARCHAR}
+        where XFXXID = #{UUID,jdbcType=VARCHAR}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from t_xfxx_zjb
+        where UUID = #{UUID,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insertSelective">
+        insert into t_xfxx_zjb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UUID != null">
+                UUID,
+            </if>
+            <if test="USERID != null">
+                USERID,
+            </if>
+            <if test="XFXXID != null">
+                XFXXID,
+            </if>
+            <if test="BY1 != null">
+                BY1,
+            </if>
+            <if test="BY2 != null">
+                BY2,
+            </if>
+            <if test="BY3 != null">
+                BY3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="UUID != null">
+                #{UUID,jdbcType=VARCHAR},
+            </if>
+            <if test="USERID != null">
+                #{USERID,jdbcType=VARCHAR},
+            </if>
+            <if test="XFXXID != null">
+                #{XFXXID,jdbcType=VARCHAR},
+            </if>
+            <if test="BY1 != null">
+                #{BY1,jdbcType=VARCHAR},
+            </if>
+            <if test="BY2 != null">
+                #{BY2,jdbcType=VARCHAR},
+            </if>
+            <if test="BY3 != null">
+                #{BY3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getXfxxListByUser" resultType="HashMap">
+        SELECT XFXXID,
+               (SELECT b.XFMC FROM t_xfxx b WHERE XFXXID = b.UUID) XFMC,
+               GROUP_CONCAT(b.bumenid)                             BUMENIDS,
+               GROUP_CONCAT(b.zhongwen)                            ZHONGWENS
+        FROM t_xfxx_zjb a
+                 LEFT JOIN t_zls_xfxx_fjh b
+                           on a.XFXXID = b.xiaofangid
+        WHERE USERID = #{USERID,jdbcType=VARCHAR}
+        group by a.XFXXID, a.XFMC
+    </select>
+
+    <select id="selectByUserIdAndXfxxId" resultType="HashMap">
+        select *
+        from t_xfxx_zjb
+        where USERID = #{USERID,jdbcType=VARCHAR}
+          and XFXXID = #{XFXXID,jdbcType=VARCHAR}
+    </select>
+</mapper>

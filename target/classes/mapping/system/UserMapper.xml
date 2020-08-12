@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aisino.mapper.system.UserMapper">
+
+	<insert id="insertUser" parameterType="com.aisino.entity.system.User">
+		insert into t_qx_user (id, username, password, 
+      		name, role_id, sort, company_id, company_name)
+    	values (#{id,jdbcType=VARCHAR},
+    		#{username,jdbcType=VARCHAR}, 
+      		#{password,jdbcType=VARCHAR}, 
+    		#{name,jdbcType=VARCHAR}, 
+    		#{role_id,jdbcType=VARCHAR}, 
+      		#{sort,jdbcType=INTEGER},
+      		#{company_id,jdbcType=VARCHAR},  
+      		#{company_name,jdbcType=VARCHAR}
+      		)
+	</insert>
+	
+	<select id="checkUserName" resultType="int">
+		select count(1) from t_qx_user where username = #{username,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="checkUserPwd" resultType="com.aisino.entity.system.User">
+		select * from t_qx_user where username = #{username,jdbcType=VARCHAR} and password = #{pwd,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="checkUserId" resultType="int">
+		select count(1) from t_qx_user where id = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectUsers" resultType="HashMap">
+			SELECT
+			t.ID,
+			t.USERNAME,
+			t.NAME,
+			t.COMPANY_ID,
+			t.COMPANY_NAME,
+			ro.name ROLE_NAME,
+			ro.id ROLE_ID
+		FROM
+			t_qx_user t
+			LEFT JOIN t_user_role ur ON t.id = ur.user_id
+			LEFT JOIN t_qx_role ro ON ur.role_id = ro.id
+		WHERE 1=1
+		<if test="USERNAME != null and USERNAME != ''">
+			and t.USERNAME like CONCAT('%',#{USERNAME},'%')
+		</if>
+		<if test="COMPANY_NAME != null and COMPANY_NAME != ''">
+			and t.COMPANY_NAME like CONCAT('%',#{COMPANY_NAME},'%')
+		</if>
+		ORDER BY
+			t.sort DESC
+	</select>
+	
+	<update id="updateUser" parameterType="com.aisino.entity.system.User">
+		update t_qx_user set
+			<if test="name != null and name != ''">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="company_id != null and company_id != ''">
+                company_id = #{company_id,jdbcType=VARCHAR},
+            </if>
+            <if test="company_name != null and company_name != ''">
+                company_name = #{company_name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+             sort = #{sort,jdbcType=INTEGER}
+          WHERE id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from t_qx_user where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getRoleLists" resultType="HashMap">
+		select * from t_qx_role order by sort desc
+	</select>
+	
+	<delete id="deleteUserRole">
+		delete from t_user_role where user_id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="saveUserRole">
+		insert into t_user_role (user_id , role_id) 
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{role_id,jdbcType=VARCHAR}
+		)
+	</insert>
+
+</mapper>
