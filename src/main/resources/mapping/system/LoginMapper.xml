@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aisino.mapper.system.LoginMapper">
+<mapper namespace="com.test.mapper.system.LoginMapper">
 
     <!-- 用户验证 -->
     <select id="checkUsername" resultType="boolean">
@@ -18,7 +18,7 @@
     </select>
 
     <!-- 根据账号和密码获取相应的上级 -->
-    <select id="selectByNameAndPSW" resultType="com.aisino.entity.system.Menu">
+    <select id="selectByNameAndPSW" resultType="com.test.entity.system.Menu">
         SELECT M.*
         FROM
             t_qx_menu M

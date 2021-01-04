@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aisino.mapper.cfhb.XfxxMapper">
-    <resultMap id="BaseResultMap" type="com.aisino.entity.initial.TXfxx">
+    <resultMap id="BaseResultMap" type="com.test.entity.initial.TXfxx">
         <id column="UUID" property="UUID" jdbcType="VARCHAR"/>
         <result column="CREATETIME" property="CREATETIME" jdbcType="TIMESTAMP"/>
         <result column="UPDATETIME" property="UPDATETIME" jdbcType="TIMESTAMP"/>
@@ -27,7 +27,7 @@
     UUID, CREATETIME, UPDATETIME, XFMC, XFSH, XFYHZH, XFDZDH, terminalCode, appId, authorizationCode, 
     requestCode, sigCode, password, token, fjh, jqbh, serverUrl, BY1, BY2, BY3
   </sql>
-    <select id="selectXiaoFangByXiaoFang" resultType="com.aisino.entity.initial.TXfxx" parameterType="java.lang.String">
+    <select id="selectXiaoFangByXiaoFang" resultType="com.test.entity.initial.TXfxx" parameterType="java.lang.String">
         select * from t_xfxx where xfsh=#{XFSH}
     </select>
     <insert id="addXfxx">

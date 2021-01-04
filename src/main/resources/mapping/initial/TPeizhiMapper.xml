@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aisino.mapper.initial.TPeizhiMapper" >
-  <resultMap id="BaseResultMap" type="com.aisino.entity.initial.TPeizhi" >
+<mapper namespace="com.test.mapper.initial.TPeizhiMapper" >
+  <resultMap id="BaseResultMap" type="com.test.entity.initial.TPeizhi" >
     <id column="UUID" property="UUID" jdbcType="VARCHAR" />
     <result column="CREATETIME" property="CREATETIME" jdbcType="TIMESTAMP" />
     <result column="UPDATETIME" property="UPDATETIME" jdbcType="TIMESTAMP" />
@@ -32,7 +32,7 @@
     delete from t_peizhi
     where UUID = #{UUID,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.aisino.entity.initial.TPeizhi" >
+  <insert id="insert" parameterType="com.test.entity.initial.TPeizhi" >
     insert into t_peizhi (UUID, CREATETIME, UPDATETIME, 
       SKR, FHR, CXJE, CFYJ, 
       TS_EMAIL, TS_EMAIL_URL, TS_EMAIL_PASSWORD, 
@@ -44,7 +44,7 @@
       #{TS_EMAIL_SMTP,jdbcType=VARCHAR}, #{TS_EMAIL_POP3,jdbcType=VARCHAR}, #{BY1,jdbcType=VARCHAR}, 
       #{BY2,jdbcType=VARCHAR}, #{BY3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aisino.entity.initial.TPeizhi" >
+  <insert id="insertSelective" parameterType="com.test.entity.initial.TPeizhi" >
     insert into t_peizhi
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="UUID != null" >
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aisino.entity.initial.TPeizhi" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.entity.initial.TPeizhi" >
     update t_peizhi
     <set >
       <if test="CREATETIME != null" >
@@ -189,7 +189,7 @@
     </set>
     where UUID = #{UUID,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aisino.entity.initial.TPeizhi" >
+  <update id="updateByPrimaryKey" parameterType="com.test.entity.initial.TPeizhi" >
     update t_peizhi
     set CREATETIME = #{CREATETIME,jdbcType=TIMESTAMP},
       UPDATETIME = #{UPDATETIME,jdbcType=TIMESTAMP},

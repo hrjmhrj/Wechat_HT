@@ -1,16 +1,16 @@
 spring:
-  thymeleaf.content-type: text/html
+  thymeleaf.servlet.content-type: text/html
   thymeleaf.cache: false
   thymeleaf.mode: LEGACYHTML5
-  http:
-      multipart:
-        maxFileSize: 50Mb
-        maxRequestSize: 100Mb
   profiles:
     active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #响应时间统一格式化
     time-zone: GMT+8
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 50MB
 # mybatis配置
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
@@ -18,19 +18,42 @@ mybatis:
   type-aliases-package: com.aisino.entity
   configuration:
     call-setters-on-nulls: true
+    map-underscore-to-camel-case: false #开启驼峰转换
+
+# ibm 队列配置
+#ibm:
+#  host: 192.168.137.48
+#  port: 1414
+#  channel: ZSJN
+#  queue_manager: ZSJN
+#  userId: ZSJN
+#  password: 123
+# ibm 队列配置
+#ibm:
+#  host: 91.20.2.211
+#  port: 2727
+#  channel: CHL_8888_0000
+#  queue_manager: C_Test
+#  userId: CHENP
+#  password: 123
 
 # pagehelper分页插件
+
 pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
 #允许优雅中止项目
-endpoints:
-  shutdown:
-    enabled: true
-    path: /duyiping
-    sensitive: false
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+      sensitive: false
+  endpoints:
+    web:
+      path-mapping:
+        shutdown:
 file:
   defaultPath: /springboot/zlspdf/
 

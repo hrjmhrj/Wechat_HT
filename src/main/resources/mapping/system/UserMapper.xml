@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aisino.mapper.system.UserMapper">
+<mapper namespace="com.test.mapper.system.UserMapper">
 
-	<insert id="insertUser" parameterType="com.aisino.entity.system.User">
+	<insert id="insertUser" parameterType="com.test.entity.system.User">
 		insert into t_qx_user (id, username, password, 
       		name, role_id, sort, company_id, company_name)
     	values (#{id,jdbcType=VARCHAR},
@@ -20,7 +20,7 @@
 		select count(1) from t_qx_user where username = #{username,jdbcType=VARCHAR}
 	</select>
 	
-	<select id="checkUserPwd" resultType="com.aisino.entity.system.User">
+	<select id="checkUserPwd" resultType="com.test.entity.system.User">
 		select * from t_qx_user where username = #{username,jdbcType=VARCHAR} and password = #{pwd,jdbcType=VARCHAR}
 	</select>
 	
@@ -52,7 +52,7 @@
 			t.sort DESC
 	</select>
 	
-	<update id="updateUser" parameterType="com.aisino.entity.system.User">
+	<update id="updateUser" parameterType="com.test.entity.system.User">
 		update t_qx_user set
 			<if test="name != null and name != ''">
                 name = #{name,jdbcType=VARCHAR},

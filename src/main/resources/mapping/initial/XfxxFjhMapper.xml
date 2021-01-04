@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aisino.mapper.initial.XfxxFjhMapper">
+<mapper namespace="com.test.mapper.initial.XfxxFjhMapper">
   <insert id="insertSelective">
     insert into t_zls_xfxx_fjh
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -36,7 +36,7 @@
     delete from t_zls_xfxx_fjh
     where bumenid = #{bumenid,jdbcType=VARCHAR}
   </delete>
-  <select id="selectByPrimaryKey" resultType="com.aisino.entity.initial.XfxxFjh">
+  <select id="selectByPrimaryKey" resultType="com.test.entity.initial.XfxxFjh">
     select
     *
     from t_zls_xfxx_fjh

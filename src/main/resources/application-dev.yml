@@ -1,7 +1,8 @@
 server:
   # 端口号
   port: 9017
-  context-path: /aisino/
+  servlet:
+    context-path: /aisino/
 spring:
     application:
       name: service-zls
