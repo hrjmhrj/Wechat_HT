@@ -1,14 +1,14 @@
 server:
   # 端口号
   port: 9010
-  context-path: /aisino/
+  context-path: /test/
 eureka:
   client:
     serviceUrl:
       defaultZone: http://101.207.250.27:91/dyp/eureka/
 spring:
   application:
-    name: service-zls
+    name: service-test
   datasource:
     name: test
     # 数据库连接
@@ -52,7 +52,7 @@ spring:
       enabled: true
 logging:
   level:
-    com.aisino.mapper: debug
+    com.test.mapper: debug
 nuonuo.config.kpaddr: https://nnfp.jss.com.cn/shop/buyer/allow/cxfKp/cxfServerKpOrderSync.action
 nuonuo.config.queryaddr: https://nnfp.jss.com.cn/shop/buyer/allow/ecOd/queryElectricKp.action
 nuonuo.config.zfQueryAddr: https://nnfp.jss.com.cn/shop/buyer/allow/cxfKp/invalidInvoice.action

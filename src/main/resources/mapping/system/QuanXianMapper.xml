@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aisino.mapper.system.QuanXianMapper">
+<mapper namespace="com.test.mapper.system.QuanXianMapper">
 
     <!-- 查询真实用户名 -->
     <select id="selectName" resultType="String">

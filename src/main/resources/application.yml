@@ -11,7 +11,7 @@ spring:
 # mybatis配置
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
-  type-aliases-package: com.aisino.entity
+  type-aliases-package: com.test.entity
   configuration:
     call-setters-on-nulls: true
 

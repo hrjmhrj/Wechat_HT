@@ -4,7 +4,7 @@ server:
   context-path: /zitest/
 spring:
     application:
-      name: service-zls
+      name: service-test
     datasource:
         name: test
         # 数据库连接
@@ -47,7 +47,7 @@ spring:
         enabled: true
 logging:
   level:
-    com.aisino.mapper: debug
+    com.test.mapper: debug
 #nuonuo.config.kpaddr: http://nnfpbox.nuonuocs.cn/shop/buyer/allow/cxfKp/cxfServerKpOrderSync.action
 #nuonuo.config.queryaddr: http://nnfpbox.nuonuocs.cn/shop/buyer/allow/ecOd/queryElectricKp.action
 #nuonuo.config.zfQueryAddr: http://nnfpbox.nuonuocs.cn/shop/buyer/allow/cxfKp/invalidInvoice.action

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aisino.mapper.initial.Txfxx_pluseMapper" >
-  <resultMap id="BaseResultMap" type="com.aisino.entity.initial.Txfxx_pluse" >
+<mapper namespace="com.test.mapper.initial.Txfxx_pluseMapper" >
+  <resultMap id="BaseResultMap" type="com.test.entity.initial.Txfxx_pluse" >
     <id column="UUID" property="UUID" jdbcType="VARCHAR" />
     <result column="CREATETIME" property="CREATETIME" jdbcType="TIMESTAMP" />
     <result column="UPDATETIME" property="UPDATETIME" jdbcType="TIMESTAMP" />
@@ -44,7 +44,7 @@
     delete from t_xfxx
     where UUID = #{UUID,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+  <insert id="insert" parameterType="com.test.entity.initial.Txfxx_pluse" >
     insert into t_xfxx (UUID, CREATETIME, UPDATETIME, 
       XFMC, XFSH, XFYHZH, 
       XFDZDH, terminalCode, appId, 
@@ -64,7 +64,7 @@
       #{phone,jdbcType=VARCHAR}, #{valid,jdbcType=VARCHAR}, #{BY1,jdbcType=VARCHAR}, 
       #{BY2,jdbcType=VARCHAR}, #{BY3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+  <insert id="insertSelective" parameterType="com.test.entity.initial.Txfxx_pluse" >
     insert into t_xfxx
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="UUID != null" >
@@ -227,7 +227,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.entity.initial.Txfxx_pluse" >
     update t_xfxx
     <set >
       <if test="CREATETIME != null" >
@@ -308,7 +308,7 @@
     </set>
     where UUID = #{UUID,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aisino.entity.initial.Txfxx_pluse" >
+  <update id="updateByPrimaryKey" parameterType="com.test.entity.initial.Txfxx_pluse" >
     update t_xfxx
     set CREATETIME = #{CREATETIME,jdbcType=TIMESTAMP},
       UPDATETIME = #{UPDATETIME,jdbcType=TIMESTAMP},

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aisino.mapper.system.MenuMapper">
+<mapper namespace="com.test.mapper.system.MenuMapper">
 	
 	<!-- 添加资源 -->
-	<insert id="insertMenu" parameterType="com.aisino.entity.system.Menu">
+	<insert id="insertMenu" parameterType="com.test.entity.system.Menu">
 		insert into t_qx_menu (id, name, url, 
       		parent_id, sort, mark,icon_url)
     	values (#{id,jdbcType=VARCHAR},
@@ -17,7 +17,7 @@
 	</insert>
 	
 	<!-- 编辑资源 -->
-	<update id="updateMenu" parameterType="com.aisino.entity.system.Menu">
+	<update id="updateMenu" parameterType="com.test.entity.system.Menu">
 		update t_qx_menu
 		<set>
 			<if test="name != null and name != ''">

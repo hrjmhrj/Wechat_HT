@@ -1,8 +1,8 @@
 # 测试杨陈接口
 #asdasdasdfsdfssdfasdasd
-POST http://localhost:9010/aisino/receiveData
-#POST http://localhost:8900/aisino/receiveData
-#POST http://fptypt.schtxxcdfgs.com:9020/aisino/receiveData
+POST http://localhost:9010/test/receiveData
+#POST http://localhost:8900/test/receiveData
+#POST http://fptypt.schtxxcdfgs.com:9020/test/receiveData
 Content-Type: application/json
 
 [{

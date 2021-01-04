@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.aisino.mapper.initial.TXfxxZjbMapper" >
-  <resultMap id="BaseResultMap" type="com.aisino.entity.initial.TXfxxZjb" >
+<mapper namespace="com.test.mapper.initial.TXfxxZjbMapper" >
+  <resultMap id="BaseResultMap" type="com.test.entity.initial.TXfxxZjb" >
     <id column="UUID" property="UUID" jdbcType="VARCHAR" />
     <result column="USERID" property="USERID" jdbcType="VARCHAR" />
     <result column="XFXXID" property="XFXXID" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from t_xfxx_zjb
     where UUID = #{UUID,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+  <insert id="insert" parameterType="com.test.entity.initial.TXfxxZjb" >
     insert into t_xfxx_zjb (UUID, USERID, XFXXID, 
       XFMC, XFSH, BY1, BY2, 
       BY3)
@@ -32,7 +32,7 @@
       #{XFMC,jdbcType=VARCHAR}, #{XFSH,jdbcType=VARCHAR}, #{BY1,jdbcType=VARCHAR}, #{BY2,jdbcType=VARCHAR}, 
       #{BY3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+  <insert id="insertSelective" parameterType="com.test.entity.initial.TXfxxZjb" >
     insert into t_xfxx_zjb
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="UUID != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.entity.initial.TXfxxZjb" >
     update t_xfxx_zjb
     <set >
       <if test="USERID != null" >
@@ -114,7 +114,7 @@
     </set>
     where UUID = #{UUID,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aisino.entity.initial.TXfxxZjb" >
+  <update id="updateByPrimaryKey" parameterType="com.test.entity.initial.TXfxxZjb" >
     update t_xfxx_zjb
     set USERID = #{USERID,jdbcType=VARCHAR},
       XFXXID = #{XFXXID,jdbcType=VARCHAR},
